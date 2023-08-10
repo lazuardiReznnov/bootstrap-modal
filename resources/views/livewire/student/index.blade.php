@@ -33,6 +33,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>course</th>
+                        <th>City</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -43,6 +44,7 @@
                         <td>{{ $student->name }}</td>
                         <td>{{ $student->email }}</td>
                         <td>{{ $student->course }}</td>
+                        <td>{{ $student->city->name }}</td>
                         <td>
                             <button
                                 type="button"

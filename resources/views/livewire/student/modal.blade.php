@@ -54,6 +54,27 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="course">City</label>
+                        <select
+                            name=""
+                            id=""
+                            class="form-control @error('city_id') is-invalid @enderror"
+                            wire:model="city_id"
+                        >
+                            <option value="">Select City</option>
+                            @foreach($cities as $city)
+                            <option value="{{ $city->id }}">
+                                {{ $city->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                        @error('city')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label for="course">Student course</label>
                         <input
                             type="text"
@@ -152,6 +173,27 @@
                             wire:model="course"
                         />
                         @error('course')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="course">City</label>
+                        <select
+                            name=""
+                            id=""
+                            class="form-control @error('city_id') is-invalid @enderror"
+                            wire:model="city_id"
+                        >
+                            <option value="">Select City</option>
+                            @foreach($cities as $city)
+                            <option value="{{ $city->id }}">
+                                {{ $city->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                        @error('city')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
