@@ -54,6 +54,28 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="course">Province</label>
+                        <select
+                            name=""
+                            id=""
+                            class="form-control @error('province_id') is-invalid @enderror"
+                            wire:model="selectedProvince"
+                        >
+                            <option value="">Select City</option>
+                            @foreach($provinces as $province)
+                            <option value="{{ $province->id }}">
+                                {{ $province->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                        @error('province_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    @if(!is_null($selectedProvince))
+                    <div class="mb-3">
                         <label for="course">City</label>
                         <select
                             name=""
@@ -74,6 +96,7 @@
                         </div>
                         @enderror
                     </div>
+                    @endif
                     <div class="mb-3">
                         <label for="course">Student course</label>
                         <input
@@ -179,6 +202,28 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="course">Province</label>
+                        <select
+                            name=""
+                            id=""
+                            class="form-control @error('province_id') is-invalid @enderror"
+                            wire:model="selectedProvince"
+                        >
+                            <option value="">Select City</option>
+                            @foreach($provinces as $province)
+                            <option value="{{ $province->id }}">
+                                {{ $province->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                        @error('province_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    @if(!is_null($selectedProvince))
+                    <div class="mb-3">
                         <label for="course">City</label>
                         <select
                             name=""
@@ -199,6 +244,7 @@
                         </div>
                         @enderror
                     </div>
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button

@@ -20,17 +20,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        City::create([
-            'name' => 'Jakarta',
-        ]);
-        City::create([
-            'name' => 'Surabaya',
-        ]);
-        City::create([
-            'name' => 'Bandung',
-        ]);
-        City::create([
-            'name' => 'Jogjakarta',
-        ]);
+        $this->call([ProvinceSeeder::class]);
     }
 }

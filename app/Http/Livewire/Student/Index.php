@@ -3,18 +3,21 @@
 namespace App\Http\Livewire\Student;
 
 use App\Models\City;
+use App\Models\Province;
 use App\Models\Student;
 use Livewire\Component;
 use Livewire\WithPagination;
+use SebastianBergmann\Type\NullType;
 
 class Index extends Component
 {
-    public $name, $email, $course, $student_id, $city_id;
-    public $cities;
+    public $name, $email, $course, $student_id, $city_id, $provinceId;
+    public $cities = null;
+    public $provinces = null;
     // public $students;
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-
+    public $selectedProvince;
     protected function rules()
     {
         return [
@@ -27,7 +30,15 @@ class Index extends Component
 
     public function mount()
     {
-        $this->cities = City::All();
+        $this->provinces = Province::All();
+        $this->cities = collect();
+    }
+
+    public function updatedSelectedProvince($provinceId)
+    {
+        if (!is_null($provinceId)) {
+            $this->cities = City::where('province_id', $provinceId)->get();
+        }
     }
 
     public function updated($fields)
@@ -71,6 +82,8 @@ class Index extends Component
             $this->name = $student->name;
             $this->email = $student->email;
             $this->course = $student->course;
+            $this->selectedProvince = $student->city->province->id;
+            $this->updatedSelectedProvince($this->selectedProvince);
         } else {
             return redirect()->to('/student');
         }
@@ -87,6 +100,7 @@ class Index extends Component
         $this->email = '';
         $this->course = '';
         $this->city_id = '';
+        $this->selectedProvince = null;
     }
 
     public function render()
